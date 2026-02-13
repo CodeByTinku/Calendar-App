@@ -1,4 +1,4 @@
-# 📅 Calendar App
+# 📅 Calendar-App
 
 A modern, feature-rich calendar application built with React, TailwindCSS, and localStorage for persistence. Create events, set reminders, and manage your schedule with a beautiful, responsive interface.
 
