@@ -60,7 +60,7 @@ const MonthView = () => {
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map((day) => (
             <div
               key={day}
-              className="text-center text-sm font-semibold text-gray-600 dark:text-gray-400 py-2"
+              className="text-center text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 py-2"
             >
               {day}
             </div>
@@ -78,7 +78,7 @@ const MonthView = () => {
               <div
                 key={index}
                 onClick={() => openEventForm(day)}
-                className={`min-h-[100px] p-2 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${
+                className={`min-h-[80px] sm:min-h-[120px] p-1 sm:p-2 rounded-lg border-2 cursor-pointer transition-all duration-200 hover:shadow-md ${
                   isToday
                     ? 'border-primary-500 bg-primary-50 dark:bg-primary-900/20'
                     : 'border-gray-200 dark:border-gray-700 hover:border-primary-300 dark:hover:border-primary-700'
@@ -86,7 +86,7 @@ const MonthView = () => {
                   !isCurrentMonth ? 'opacity-40' : ''
                 }`}
               >
-                <div className={`text-sm font-semibold mb-1 ${
+                <div className={`text-xs sm:text-sm font-semibold mb-1 ${
                   isToday
                     ? 'text-primary-700 dark:text-primary-400'
                     : 'text-gray-700 dark:text-gray-300'
@@ -103,15 +103,22 @@ const MonthView = () => {
                         e.stopPropagation();
                         openEditEventForm(event);
                       }}
-                      className={`text-xs p-1 rounded border-l-2 ${event.color} truncate hover:scale-105 transition-transform`}
+                      className="group"
                       title={event.title}
                     >
-                      {event.time} {event.title}
+                      {/* Mobile View: Dots */}
+                      <div className={`sm:hidden w-2 h-2 rounded-full mx-auto ${event.color.replace('border-', 'bg-').split(' ')[0]}`} />
+                      
+                      {/* Desktop View: Full Text */}
+                      <div className={`hidden sm:block text-xs p-1 rounded border-l-2 ${event.color} truncate hover:scale-105 transition-transform`}>
+                        {event.time} {event.title}
+                      </div>
                     </div>
                   ))}
                   {dayEvents.length > 3 && (
-                    <div className="text-xs text-gray-500 dark:text-gray-400 pl-1">
-                      +{dayEvents.length - 3} more
+                    <div className="text-[10px] sm:text-xs text-center sm:text-left text-gray-500 dark:text-gray-400 pl-1">
+                      <span className="sm:hidden">+</span>
+                      <span className="hidden sm:inline">+{dayEvents.length - 3} more</span>
                     </div>
                   )}
                 </div>

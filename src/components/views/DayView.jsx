@@ -56,7 +56,7 @@ const DayView = () => {
       </div>
 
       {/* Day Schedule */}
-      <div className="card p-6">
+      <div className="card p-4 sm:p-6">
         {dayEvents.length === 0 ? (
           <div className="text-center py-12">
             <p className="text-gray-500 dark:text-gray-400 text-lg mb-4">
@@ -77,8 +77,8 @@ const DayView = () => {
               if (slotEvents.length === 0) return null;
 
               return (
-                <div key={time} className="flex gap-4">
-                  <div className="w-20 text-sm text-gray-500 dark:text-gray-400 font-medium pt-2">
+                <div key={time} className="flex gap-2 sm:gap-4">
+                  <div className="w-14 sm:w-20 text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-medium pt-2 text-right sm:text-left">
                     {time}
                   </div>
                   <div className="flex-1 space-y-2">
@@ -86,26 +86,26 @@ const DayView = () => {
                       <div
                         key={event.id}
                         onClick={() => openEditEventForm(event)}
-                        className={`p-4 rounded-lg border-l-4 ${event.color} cursor-pointer hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5`}
+                        className={`p-3 sm:p-4 rounded-lg border-l-4 ${event.color} cursor-pointer hover:shadow-lg transition-all duration-200 transform hover:-translate-y-0.5`}
                       >
                         <div className="flex items-start justify-between">
                           <div className="flex-1">
-                            <h3 className="font-semibold text-lg text-gray-900 dark:text-white mb-1">
+                            <h3 className="font-semibold text-base sm:text-lg text-gray-900 dark:text-white mb-1">
                               {event.title}
                             </h3>
                             {event.description && (
-                              <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">
+                              <p className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm mb-2">
                                 {event.description}
                               </p>
                             )}
-                            <div className="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                            <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
                               <span>🕐 {event.time}</span>
                               {event.tags && event.tags.length > 0 && (
                                 <div className="flex gap-1">
                                   {event.tags.map((tag, idx) => (
                                     <span
                                       key={idx}
-                                      className="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 rounded-full text-xs"
+                                      className="px-2 py-0.5 bg-gray-200 dark:bg-gray-700 rounded-full text-[10px] sm:text-xs"
                                     >
                                       {tag}
                                     </span>
