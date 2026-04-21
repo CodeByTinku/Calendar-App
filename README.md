@@ -149,7 +149,7 @@ Potential features for future versions:
 - Recurring events
 - Event categories with custom colors
 - Multi-day events
-- Time zone support
+
 
 
 
